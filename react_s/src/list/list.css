@@ -1,0 +1,22 @@
+ul, li{
+	padding:0;
+	margin:0;
+}
+
+.branches li{
+	list-style: none;
+}
+.hor li{
+	float: left;
+	padding: 8px 18px;
+	cursor:pointer;
+}
+
+.select{
+	background: rgba(0,0,0, 0.45);
+	color: rgba(255,255,255,1);
+}
+
+.select i{
+	font-style: normal;
+}

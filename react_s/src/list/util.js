@@ -36,3 +36,9 @@ function loopMenuItem(children, cb) {
     }
   });
 }
+
+exports.getNodeName = function( elem ){
+  if( elem  && elem.nodeType === 1 ){
+    return elem.tagName.toLowerCase();
+  }
+}

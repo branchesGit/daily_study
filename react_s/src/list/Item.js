@@ -12,9 +12,10 @@ class Item extends React.Component{
 		props["selected"] && ( cls += 'select');
 
 		var p = {
-			"aria-key": props["key"],
+			"aria-key": props["aria-key"],
 			"className": cls
 		}
+		
 		return React.createElement('li', p, props.children );
 	}
 }

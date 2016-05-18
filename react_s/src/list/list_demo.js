@@ -12,8 +12,9 @@ class ListDemo extends React.Component{
 		 };
 	}
 
-	handleClick( e ){
-		console.log( 'list click:', e );
+	handleClick( ele ){
+		var key = ele.getAttribute("aria-key");
+		this.setState({"key": key});
 	}
 
 	render(){
@@ -22,7 +23,7 @@ class ListDemo extends React.Component{
 			<Item key="home"><i>Home</i></Item>
 			<Item key="product"><i>Product</i></Item>
 			<Item key="about"><i>About</i></Item>
-			<Item key="Touch us"><a href="http://google.com">Touch Us</a></Item>
+			<Item key="Touch us"><i>Touch Us</i></Item>
 			</List>)
 	}
 }
