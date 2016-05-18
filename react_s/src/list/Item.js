@@ -7,7 +7,15 @@ class Item extends React.Component{
 	}
 
 	render(){
-		
+		var props = this.props;
+		var cls = props.className || ""; 
+		props["selected"] && ( cls += 'select');
+
+		var p = {
+			"aria-key": props["key"],
+			"className": cls
+		}
+		return React.createElement('li', p, props.children );
 	}
 }
 
