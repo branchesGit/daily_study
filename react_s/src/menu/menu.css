@@ -27,6 +27,7 @@ ul, li{
 .branches-menu li{
 	display:block;
 	line-height: 30px;
+	cursor:pointer;
 }
 
 .level-2, .level-3{

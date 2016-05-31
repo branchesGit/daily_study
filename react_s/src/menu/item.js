@@ -37,10 +37,9 @@ class Item extends React.Component{
 
 	render(){
 		var props = this.props;
-		console.log( props.level );
 		var style = {};
 		style.paddingLeft = props.level * 8;
-   //console.log( props );
+
 		return React.createElement( "li", _extends( {style: style}, props, 
 			{onClick: this.onClick.bind(this)} ),props.children );
 	}

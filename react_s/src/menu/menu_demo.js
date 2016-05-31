@@ -17,7 +17,7 @@ class MenuDemo extends React.Component{
 	onClick( e ){
 		this.setState({
 			key: e.ikey
-		})
+		});
 	}
 
 	render(){
