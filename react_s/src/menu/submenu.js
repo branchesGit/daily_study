@@ -21,7 +21,7 @@ class SubMenu extends React.Component{
 		var dis = this.state.open ? "block" : "none";
 		var style = {"display":dis};
 		var level = props.level ;
-		return React.createElement('ul', {style: style, className: ++level}, 
+		return React.createElement('ul', {style: style, className: 'level-' + ++level}, 
 			React.Children.map(children, this.renderMenuItem.bind(this)) );
 	} 
 
@@ -30,7 +30,6 @@ class SubMenu extends React.Component{
 	}
 
 	renderMenuItem(c,i){
-		console.log( this.props );
 		var baseProps = {
 			ikey: c.key,
 			index: ++i,
@@ -51,10 +50,11 @@ class SubMenu extends React.Component{
 
 	render(){
 		var props = this.props;
-
+		var style = {};
+    style.paddingLeft = props.level * 8;
 		var isOpen = this.state.open ? "open" : 'close';
-    var baseProps =  _extends({}, {level:props.level,onClick:this.onOpenChange.bind(this),"aria-open":isOpen});
-    
+    var baseProps =  _extends({style:style}, {level:props.level,onClick:this.onOpenChange.bind(this),"aria-open":isOpen});
+
 		return React.createElement('li',{}, 
 			React.createElement('div', baseProps, props.title), 
 			this.renderSubMenuItem(props.children, props) );
