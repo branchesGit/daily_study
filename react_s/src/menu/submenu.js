@@ -53,7 +53,8 @@ class SubMenu extends React.Component{
 		var style = {};
     style.paddingLeft = props.level * 8;
 		var isOpen = this.state.open ? "open" : 'close';
-    var baseProps =  _extends({style:style}, {level:props.level,onClick:this.onOpenChange.bind(this),"aria-open":isOpen});
+    var baseProps =  _extends({style:style}, 
+    	{level:props.level,onClick:this.onOpenChange.bind(this),"aria-open":isOpen});
 
 		return React.createElement('li',{}, 
 			React.createElement('div', baseProps, props.title), 
