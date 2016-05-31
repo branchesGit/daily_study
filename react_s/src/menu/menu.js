@@ -19,7 +19,8 @@ class Menu extends React.Component{
 			ikey: c.key,
 			index: ++i,
 			onClick: this.onClick.bind(this),
-			selectedKey: this.props.selectedKey
+			selectedKey: this.props.selectedKey,
+			open: 'open'
 		}
     
     var selectedKey = this.props.selectedKey;

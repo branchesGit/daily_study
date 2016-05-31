@@ -37,7 +37,7 @@ class Item extends React.Component{
 
 	render(){
 		var props = this.props;
-   console.log( props );
+   //console.log( props );
 		return React.createElement( "li", _extends( {}, props,
 			{onClick: this.onClick.bind(this)} ),props.children );
 	}
