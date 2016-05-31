@@ -25,7 +25,7 @@ class MenuDemo extends React.Component{
 				<Item key="es2015"><span>Learn ES2015</span></Item>
 				<Item key="setup"><span>Setup</span></Item>
 				<Item key="plugins"><span>Plugins</span></Item>
-				<SubMenu>
+				<SubMenu title="二级菜单">
 					<Item key="options"><span>Options</span></Item>
 					<Item key="cli"><span>CLI</span></Item>
 					<Item key="babel"><span>Babel</span></Item>

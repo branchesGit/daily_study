@@ -18,7 +18,8 @@ class Menu extends React.Component{
 		var baseProps = {
 			ikey: c.key,
 			index: ++i,
-			onClick: this.onClick.bind(this)
+			onClick: this.onClick.bind(this),
+			selectedKey: this.props.selectedKey
 		}
     
     var selectedKey = this.props.selectedKey;

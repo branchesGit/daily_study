@@ -14,6 +14,12 @@ class SubMenu extends React.Component{
 		this.props.onClick(e);
 	}
 
+	renderSubMenuItem(children){
+		return React.createElement('ul', {}, 
+			React.Children.map(children, this.renderMenuItem.bind(this)) );
+		
+	} 
+
 	renderMenuItem(c,i){
 		var baseProps = {
 			ikey: c.key,
@@ -28,17 +34,15 @@ class SubMenu extends React.Component{
     	cls += 'select';
     	baseProps.className = cls;
     }
-
-
-		return React.cloneElement(c, baseProps)
+		return React.cloneElement(c, baseProps);
 	}
 
 	render(){
 		var props = this.props;
-	
+
 		return React.createElement('li', {}, 
-			React.createElement('ul', {}, 
-				React.Children.map(props.children, this.renderMenuItem.bind(this))));
+			React.createElement('div', {}, props.title), 
+			this.renderSubMenuItem(props.children));
 	}
 }
 
