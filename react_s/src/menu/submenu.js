@@ -14,7 +14,6 @@ class SubMenu extends React.Component{
 	}
 
 	onClick(e){
-		console.log('item click');
 		this.props.onClick(e);
 	}
 
@@ -27,8 +26,7 @@ class SubMenu extends React.Component{
 	} 
 
 	onOpenChange(e){
-		this.setState({"open": !this.state.open})
-		
+		this.setState({"open": !this.state.open});
 	}
 
 	renderMenuItem(c,i){
@@ -50,7 +48,7 @@ class SubMenu extends React.Component{
 
 	render(){
 		var props = this.props;
-		var isOpen = this.opened ? "open" : 'close';
+		var isOpen = this.state.open ? "open" : 'close';
     var baseProps =  _extends({}, {onClick:this.onOpenChange.bind(this),"aria-open":isOpen});
     
 		return React.createElement('li',{}, 

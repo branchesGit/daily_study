@@ -1,6 +1,8 @@
  import React from 'react'
 import ReactDOM from 'react-dom'
 
+require("./menu.css");
+
 var util = require('util');
 
 class Menu extends React.Component{
@@ -41,7 +43,8 @@ class Menu extends React.Component{
 
 		var baseProps = { 
 			className: cls,
-			selectedKey: props.selectedKey
+			selectedKey: props.selectedKey,
+			style: props.style || {}
 		};
 
 		return React.createElement( 'ul', baseProps, 

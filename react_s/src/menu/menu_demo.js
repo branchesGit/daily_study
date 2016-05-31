@@ -21,7 +21,9 @@ class MenuDemo extends React.Component{
 	}
 
 	render(){
-		return (<Menu selectedKey={this.state.key} onClick={this.onClick.bind(this)}>
+		var style = {"width":"200px"};
+		
+		return (<Menu selectedKey={this.state.key} style={style} onClick={this.onClick.bind(this)}>
 				<Item key="es2015"><span>Learn ES2015</span></Item>
 				<Item key="setup"><span>Setup</span></Item>
 				<Item key="plugins"><span>Plugins</span></Item>
