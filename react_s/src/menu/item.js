@@ -31,7 +31,6 @@ class Item extends React.Component{
     	baseProps.className = cls;
     }
 
-
 		return React.cloneElement(c, baseProps)
 	}
 
@@ -39,8 +38,9 @@ class Item extends React.Component{
 		var props = this.props;
 		var style = {};
 		style.paddingLeft = props.level * 8;
-
-		return React.createElement( "li", _extends( {style: style}, props, 
+		var cls = props.className || "";
+		cls += "item"
+		return React.createElement( "li", _extends( {style: style, className: cls}, props, 
 			{onClick: this.onClick.bind(this)} ),props.children );
 	}
 }

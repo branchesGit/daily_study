@@ -35,3 +35,8 @@ ul, li{
 	left:0;
 }
 
+.branches-menu .item:hover{
+	background-color: #333;
+	color:#ff9900;
+}
+
