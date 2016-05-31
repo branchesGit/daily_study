@@ -8,7 +8,9 @@ class SubMenu extends React.Component{
 
 	constructor( props ){
 		super( props );
-		this.opened = 0;
+		this.state = {
+			"open": 0
+		}
 	}
 
 	onClick(e){
@@ -17,7 +19,7 @@ class SubMenu extends React.Component{
 	}
 
 	renderSubMenuItem(children){
-		var dis = this.opened ? "block" : "none";
+		var dis = this.state.open ? "block" : "none";
 		var style = {"display":dis};
 	
 		return React.createElement('ul', {style: style}, 
@@ -25,8 +27,8 @@ class SubMenu extends React.Component{
 	} 
 
 	onOpenChange(e){
-		this.opened = !this.opened;
-		this.forceUpdate();
+		this.setState({"open": !this.state.open})
+		
 	}
 
 	renderMenuItem(c,i){
