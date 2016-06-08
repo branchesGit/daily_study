@@ -160,23 +160,55 @@ img{ max-width:100%; }
 	position:absolute;
 }
 
+.page-3{
+	background:url(page-4-bg.jpg) no-repeat;
+}
 
 
+.animate-area{
+	width:100%;
+	position:relative;
+	margin: 0 auto;
+	margin-top: 120px;
+}
 
+.tphone-bg, .photoes{
+	position: absolute;
+	left:50%;
+	
+}
+.photoes{
+	top: 40px;
+}
 
+.photoes img, .tphone-bg img{
+	position: relative;
+	left:-50%;
+}
 
+.photoes img{
+	width:150px;
+}
 
+.tphone-bg img{
+	width:140px;
+}
 
+.photoes-up, .photoes-low{
+	background-color:#000;
+	height:50%;
+	position:absolute;
+	width:100%;
+	left:-50%;
+}
 
+.photoes-up{
+	top:5px;
+}
 
-
-
-
-
-
-
-
-
+.photoes-low{
+	bottom:10px;
+}
 
 
 
