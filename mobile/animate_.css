@@ -1,0 +1,212 @@
+.current .title-animate{
+	-webkit-animation-name:title-animate;
+	animation-name:title-animate;
+	animation-duration: 0.6s;
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode:both;
+	-webkit-animation-timing-function:ease-in;
+	animation-timing-function: ease-in;
+	transform-origin: bottom;
+	-webkit-transform-origin:bottom;
+
+}
+
+@-webkit-keyframes title-animate{
+	0%{
+		opacity:0;
+		-webkit-transform:translate3d(0,50%,0);
+		transform: translate3d(0,50%,0);
+	}
+	100%{
+		opacity:1;
+		-webkit-transform:translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+}
+
+@keyframes title-animate{
+	0%{
+		opacity:0;
+		-webkit-transform:translate3d(0,50%,0);
+		transform: translate3d(0,50%,0);
+	}
+	100%{
+		opacity:1;
+		-webkit-transform:translate3d(0,0,0);
+		transform: translate3d(0,0,0);
+	}
+}
+
+.current .bounceInLeft{
+	-webkit-animation-name:boundLeft;
+	animation-name:boundLeft;
+	animation-duration: 0.6s;
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode:both;
+	animation-fill-mode:both;
+}
+
+@keyframes boundLeft{
+	0%, 60%, 75%, 90%, 100% {
+	      -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	      transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	  }
+
+	  0% {
+	      opacity: 0;
+	      -webkit-transform: translate3d(0, 3000px, 0);
+	      transform: translate3d(0, 3000px, 0);
+	  }
+
+	  60% {
+	      opacity: 1;
+	      -webkit-transform: translate3d(0, -12px, 0);
+	      transform: translate3d(0, -12px, 0);
+	  }
+
+	  75% {
+	      -webkit-transform: translate3d(0, 5px, 0);
+	      transform: translate3d(0, 5px, 0);
+	  }
+
+	  90% {
+	      -webkit-transform: translate3d(0, -2px, 0);
+	      transform: translate3d(0, -2px, 0);
+	  }
+
+	  100% {
+	      -webkit-transform: none;
+	      transform: none;
+	  }
+}
+
+.current .people-animate{
+	-webkit-animation-name:people-animate;
+	animation-name:people-animate;
+	-webkit-animation-duration: 0.6s;
+	animation-duration: 0.6s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-timing-function: ease-in;
+	animation-timing-function: ease-in;
+	-webkit-transform-origin: bottom ;
+	transform-origin: bottom;
+}
+
+.delay-2s{
+	animation-delay: 1.2s;
+}
+
+.delay-3s{
+	animation-delay:1.6s;
+}
+
+
+@keyframes people-animate{
+	0%{
+		-webkit-transform:scale3d(0,0,0);
+		transform:scale3d(0,0,0);
+	}
+	100%{
+		-webkit-transform:scale3d(1,1,1);
+		transform:scale3d(1,1,1);
+	}
+}
+
+.current .c{
+	animation-name: circle-animate;
+	-webkit-animation-name:circle-animate;
+	-webkit-animation-duration: 4.5s;
+	animation-duration: 4.5s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	animation-timing-function: linear;
+}
+
+@keyframes circle-animate{
+    0% {
+        opacity:0.8;
+        -webkit-transform: scale3d(0.2,0.2,0.2);
+        transform: scale3d(0,0,0);
+    }
+    100% {
+        opacity: 0.2;
+        -webkit-transform: scale3d(2.5, 2.5, 2.5);
+        transform: scale3d(2.5, 2.5, 2.5);
+
+    }
+}
+
+
+
+.boundUp{
+	-webkit-animation-name: boundUp;
+	animation-name: boundUp;
+	animation-duration: 1.5s;
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode:both;
+	-webkit-animation-timing-function:ease-out;
+	animation-timing-function: ease-out;
+	transform-origin: bottom;
+	-webkit-transform-origin:bottom;
+	animation-iteration-count:infinite;
+	-webkit-animation-iteration-count:infinite;
+}
+
+@keyframes boundUp{
+	10%{
+		-webkit-transform: translate3d(0, -5px, 0);
+		transform: translate3d(0, -5px, 0);
+	}
+	100%{
+		transform: translate3d(0,0,0);
+		-webkit-transform: translate3d(0,0,0);
+	}
+}
+
+
+
+
+@-webkit-keyframes round-animate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes round-animate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.current .round-animate {
+    -webkit-animation-name: round-animate;
+    animation-name: round-animate;
+    animation-delay: 1.6s;
+    -webkit-animation-delay:1.6s;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    transform-origin: center;
+}
+
+
+
