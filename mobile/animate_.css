@@ -290,7 +290,98 @@
 	}
 
 	100%{
-		opacity: 0.5;
+		opacity: 0;
 		transform: translateX(-1000px);
+	}
+}
+
+.current .fadein-animate{
+	animation-name:fadein-animate;
+	animation-delay: 1.5s;
+	animation-duration: 0.6s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: both;
+}
+
+@keyframes fadein-animate{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+.current .photoes-bg-animate{
+	animation-name: pbg-animate;
+	animation-delay: 1.5s;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in;
+}
+
+@keyframes pbg-animate{
+	0%{
+		opacity: 1;
+	}
+
+	100%{
+		opacity: 0;
+	}
+}
+
+.current .ps-animate{
+	animation-name:ps-animate;
+	animation-delay: 1.5s;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-timing-function: ease-in;
+	width:140px;
+}
+
+@keyframes ps-animate{
+	0%{
+		opacity: 0;
+	}
+
+	100%{
+		opacity: 1;
+	}
+}
+
+.current .rotate-animate{
+	animation-name: rotates-animate;
+	animation-duration: 2.5s;
+	animation-delay: 1.2s;
+	animation-iteration-count: infinite;
+	animation-fill-mode: both;
+	animation-timing-function:linear;
+}
+
+@keyframes rotates-animate{
+	0%{
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+.current .rotate-round-animate{
+	animation-name: fly-animate;
+	animation-delay: 1.5s;
+	animation-duration: 0.5s;
+	animation-fill-mode: both;
+	animation-timing-function: linear;
+}
+
+@keyframes fly-animate{
+	0%{
+		transform:translate3d(400px, -100px, 0);
+	}
+	100%{
+		transform: translate3d(0,0,0);
 	}
 }
