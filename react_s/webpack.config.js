@@ -26,5 +26,8 @@ module.exports = {
 	resolve: {
 		root: './',
 		extensions: [ '', '.js', '.json', '.scss' ]
-	}
+	},
+	plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 }

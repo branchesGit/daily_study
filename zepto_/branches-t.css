@@ -1,0 +1,46 @@
+.branches-t{
+	border: 1px solid #00F;
+	border-collapse:collapse;
+}
+.branches-t td, .branches-t th{
+	border: 1px solid #00F;
+	line-height: 28px;
+}
+
+.branches-t td{
+	padding-left:10px;
+	word-wrap:break-word;
+	white-space: normal;
+	word-break: break-all;
+}
+
+.branches-pagination-bar li{
+	float: left;
+	padding: 10px 15px;
+	list-style: none;
+	border: 1px solid #ccc;
+	margin: 0 10px;
+	cursor:pointer;
+}
+
+.branches-pagination-bar li.select {
+	border:0;
+	color: #000;
+}
+li.select a{
+	color: inherit;
+	font-weight: bold;
+}
+
+.branches-pagination-bar li:hover{
+	border-color: rgba(0,0,255, 0.8);
+}
+
+.branches-pagination-bar li a{
+	text-decoration: none;
+}
+
+
+.branches-pagination-bar li a:hover{
+	text-decoration: none;
+}
