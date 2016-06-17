@@ -28,3 +28,8 @@ ul{
 li>div{
 	cursor: pointer;
 }
+
+.menu-item:hover, .active{
+	background-color: #fef1e9;
+	color:#f37327;
+}
