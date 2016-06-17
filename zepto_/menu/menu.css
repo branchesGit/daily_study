@@ -1,0 +1,30 @@
+html,body, ul, li, div{margin:0;padding:0;}
+
+.brh-menu{
+	max-width:1000px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 100px;
+	color:#fff;
+	width:200px;
+}
+
+ul, li{list-style:none;}
+
+li{ 
+	min-height: 32px;
+	line-height: 32px;
+	background-color: rgb( 119,119,119);
+	position:relative;
+	display: list-item;
+}
+
+
+ul{
+	padding: 0;
+	overflow: hidden;
+}
+
+li>div{
+	cursor: pointer;
+}
