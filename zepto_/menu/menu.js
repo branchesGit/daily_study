@@ -17,14 +17,15 @@ define(['zepto','event', 'ajax'], function($){
 				$(this).append( _createUL( level, list ) );
 			});
 
-			/*
+			
 			this.on('click', '.sub-menu', function(){
-				var $ul = $($(this).find('ul')[0]);
+				//alert('click')
+				var $ul = $($(this).parent().find('ul')[0]);
 				var dis = $ul.css("display");
 				dis = dis === "block" ? "none" : "block";
 				$ul.css("display",dis);
-			});*/
-			
+			});
+
 		}
 
 	}
@@ -53,7 +54,7 @@ define(['zepto','event', 'ajax'], function($){
 			var subs = obj.subs;
 			level++;
 
-			$li.addClass("sub-menu")
+			$div.addClass("sub-menu")
 			$li.append( _createUL( level,subs ) );
 		}
 
