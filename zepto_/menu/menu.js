@@ -33,13 +33,17 @@ define(['zepto','event', 'ajax', 'touch'], function($){
 					$(this).on('mouseout', ".subs", _onMouseOut);
 				}*/
 				$(this).find(subMenuCls).on('tap', _handleSubMenuClick);
-				$(this).find(subMenuCls).on('touchstart',function(){
-					$(this).closest("li").addClass(settings.activeCls);
-				});
 
-				$(this).find(subMenuCls).on('touchend',function(){
-					$(this).closest("li").removeClass(settings.activeCls);
-				});
+				if(!_isVertical()){
+					$(this).find(subMenuCls).on('touchstart',function(){
+						$(this).closest("li").addClass(settings.activeCls);
+					});
+
+					$(this).find(subMenuCls).on('touchend',function(){
+						$(this).closest("li").removeClass(settings.activeCls);
+					});
+				}
+
 				//点击每一项时的处理方式
 				var menuItemCls = "." + settings.menuItem;
 				$(this).find(menuItemCls).on('tap', _handleMenuItem);

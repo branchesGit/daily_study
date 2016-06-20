@@ -28,6 +28,7 @@ require({
 
 require(['menu'], function(){
 	$(function(){
+		//$(".brh-menu").Menu();
 		$(".brh-menu").Menu({"direction":"horizontal"});
 	})
 });
