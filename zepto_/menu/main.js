@@ -2,7 +2,8 @@ require({
 	paths:{
 		'zepto': '../zepto/src/zepto',
 		'event':'../zepto/src/event',
-		'ajax': '../zepto/src/ajax'
+		'ajax': '../zepto/src/ajax',
+		'touch':'../zepto/src/touch'
 	},
 
 	shim:{
@@ -15,6 +16,10 @@ require({
 			exports: '$'
 		},
 		'ajax':{
+			deps:['zepto'],
+			exports: '$'
+		},
+		'touch':{
 			deps:['zepto'],
 			exports: '$'
 		}

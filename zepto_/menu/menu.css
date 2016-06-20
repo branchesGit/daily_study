@@ -1,5 +1,7 @@
 html,body, ul, li, div{margin:0;padding:0;}
 
+html{	-webkit-tap-highlight-color:rgba(0,0,0,0);}
+
 .brh-menu{
 	max-width:1000px;
 	margin-right: auto;
@@ -7,6 +9,7 @@ html,body, ul, li, div{margin:0;padding:0;}
 	margin-top: 100px;
 	color:#333;
 	font-size: 12px;
+	-webkit-user-select:none;
 }
 
 ul, li{list-style:none;}
@@ -79,8 +82,8 @@ li>div{
 	white-space: nowrap;
 }
 
-
 .center{
+	margin-top: 400px;
 	position: relative;
 	left:50%;
 	float: left;

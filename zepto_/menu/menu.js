@@ -1,4 +1,4 @@
-define(['zepto','event', 'ajax'], function($){
+define(['zepto','event', 'ajax', 'touch'], function($){
 	var settings = {
 		url: './data.json',
 		direction: 'vertical',
@@ -25,15 +25,17 @@ define(['zepto','event', 'ajax'], function($){
 				$(this).append( _createUL( level, list ) );
 				//垂直时，子菜单的点击事件
 				var subMenuCls = '.' + settings.subMenuCls;
+				/*
 				if( _isVertical() ){
 					$(this).on('click', subMenuCls, _handleSubMenuClick);
 				} else {
 					$(this).on('mouseover', ".subs", _onMouseOver);
 					$(this).on('mouseout', ".subs", _onMouseOut);
-				}
+				}*/
+					$(this).find(subMenuCls).on('tap', _handleSubMenuClick);
 				//点击每一项时的处理方式
 				var menuItemCls = "." + settings.menuItem;
-				$(this).on('click', menuItemCls, _handleMenuItem);
+				$(this).find(menuItemCls).on('tap', _handleMenuItem);
 			});
 		}
 	}
@@ -60,7 +62,7 @@ var _onMouseOut = function(){
 };
 
 var _isVertical = function(){
-	return settings.direction === 'vertical'
+	return settings.direction === 'vertical';
 };
 
 var _handleMenuItem = function(){
@@ -70,8 +72,44 @@ var _handleMenuItem = function(){
 	$(this).closest("." + settings.prefixCls).find(menuItemCls).removeClass(activeCls)
 	$(this).addClass(activeCls);
 }
+	
+	var _removeOpenSubMenu = function( $elem ){
+		if( !_isVertical() ){
+			var $openMenus = $elem.find(".title-open");
+			$openMenus.each(function(idx,menu){
+				var $li = $(menu).parent();
+				var removeCls = settings.openSubMenu,
+					addCls = settings.hiddenSubMenu;
+
+				var $ul = $($(this).parent().find('ul')[0]);
+				$ul.removeClass(removeCls).addClass(addCls);
+				$(menu).removeClass('title-' + removeCls).addClass('title-' + addCls);
+			})
+		}
+	};
+
+	var _isSameMenu = function( $elem, $parent){
+		var $menus = $parent.find(".title-open");
+		var elem = $elem[0];
+		var bSame = false;
+
+		$menus.each(function(idx,menu){
+			if( menu === elem ){
+				bSame = true;
+				return false;
+			}
+		});
+
+		return bSame;
+	};
 
 	var _handleSubMenuClick = function(){
+		var $parent = $(this).closest("ul");
+
+		if( !_isSameMenu( $(this), $parent ) ){
+			_removeOpenSubMenu($parent);
+		}
+
 		var $ul = $($(this).parent().find('ul')[0]);
 		var dis = $ul.css("display");
 		var removeCls,addCls;
