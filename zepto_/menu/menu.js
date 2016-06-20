@@ -11,7 +11,8 @@ define(['zepto','event', 'ajax'], function($){
 		hiddenSubMenu:'hidden'
 	};
 
-	$.fn.Menu = function(){
+	$.fn.Menu = function( options ){
+		settings = $.extend( {}, settings, options );
 		_loadMenuData();
 
 		if( settings.loadedData ){
@@ -24,14 +25,43 @@ define(['zepto','event', 'ajax'], function($){
 				$(this).append( _createUL( level, list ) );
 				//垂直时，子菜单的点击事件
 				var subMenuCls = '.' + settings.subMenuCls;
-				(settings.direction === "vertical") &&
-				( $(this).on('click', subMenuCls, _handleSubMenuClick) );
+				if( _isVertical() ){
+					$(this).on('click', subMenuCls, _handleSubMenuClick);
+				} else {
+					$(this).on('mouseover', ".subs", _onMouseOver);
+					$(this).on('mouseout', ".subs", _onMouseOut);
+				}
 				//点击每一项时的处理方式
 				var menuItemCls = "." + settings.menuItem;
 				$(this).on('click', menuItemCls, _handleMenuItem);
 			});
 		}
 	}
+
+var _onMouseOver = function(){
+	var $ul = $($(this).find('ul')[0]);
+	var dis = $ul.css("display");
+	var removeCls,addCls;
+
+	removeCls = settings.hiddenSubMenu ;
+	addCls = settings.openSubMenu;
+	$ul.removeClass(removeCls).addClass(addCls);
+	$ul.prev().removeClass('title-' + removeCls).addClass('title-' + addCls);
+};
+
+var _onMouseOut = function(){
+	var $ul =  $($(this).find('ul')[0]);
+	var removeCls,addCls;
+	removeCls = settings.openSubMenu;
+	addCls = settings.hiddenSubMenu ;
+	
+	$ul.removeClass(removeCls).addClass(addCls);
+	$ul.prev().removeClass('title-' + removeCls).addClass('title-' + addCls);
+};
+
+var _isVertical = function(){
+	return settings.direction === 'vertical'
+};
 
 var _handleMenuItem = function(){
 	var menuItemCls = "." + settings.menuItem,
@@ -61,9 +91,13 @@ var _handleMenuItem = function(){
 	var _createUL = function( level, list ){
 		var $ul = $("<ul data-level=\"" + level + "\"></ul>");
 		
+		if( level === 1 && !_isVertical() ){
+			$ul.addClass("branches-horizontal");
+		} 
+
 		if( level !== 1){
 			$ul.addClass(settings.hiddenSubMenu);
-		}
+		} 
 
 		$.each( list, function( idx, obj ){
 			$ul.append( _createLI(level, idx, obj) )
@@ -76,7 +110,7 @@ var _handleMenuItem = function(){
 		var $li = $('<li data-index="' + (++index) + '" data-level="' + level +'"></li>');
 		var $div = $('<div>' + obj.label + '</div>');
 		$li.append( $div );
-		$div.css("PaddingLeft", level * settings.oPaddingLeft + "px");
+		_isVertical() && $div.css("PaddingLeft", level * settings.oPaddingLeft + "px");
 
 		if( obj.subs ){
 			var subs = obj.subs;
@@ -84,6 +118,7 @@ var _handleMenuItem = function(){
 
 			$div.addClass(settings.subMenuCls).addClass("title-hidden");
 			$li.append( _createUL( level,subs ) );
+			$li.addClass("subs");
 		} else {
 			$li.addClass(settings.menuItem);
 		}

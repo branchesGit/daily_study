@@ -23,7 +23,8 @@ require({
 
 require(['menu'], function(){
 	$(".menu").click(function(){
-		$(".brh-menu").Menu();
+		$(".brh-menu").Menu({"direction":"horizontal"});
+	//	$(".brh-menu").Menu();
 	})
 });
 

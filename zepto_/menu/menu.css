@@ -6,7 +6,6 @@ html,body, ul, li, div{margin:0;padding:0;}
 	margin-left: auto;
 	margin-top: 100px;
 	color:#333;
-	width:200px;
 	font-size: 12px;
 }
 
@@ -18,12 +17,6 @@ li{
 	background-color: rgb( 255,255,255);
 	position:relative;
 	display: list-item;
-}
-
-
-ul{
-	padding: 0;
-	overflow: hidden;
 }
 
 li>div{
@@ -67,4 +60,33 @@ li>div{
 .title-open:after{
 	transform: rotate(90deg);
 	top:10px;
+}
+
+.branches-horizontal>li{
+	float:left;
+	position: relative;
+}
+
+
+.branches-horizontal .menu-item, 
+.branches-horizontal .sub-menu{
+	padding: 0 30px;
+}
+
+.branches-horizontal ul{
+	position:absolute;
+	z-index: 10;
+	white-space: nowrap;
+}
+
+.menu{
+	display:block;
+	clear:both;
+	margin: 0 auto;
+	border-radius: 5px;
+	padding: 8px 15px;
+	float:left;
+	margin-left: 100px;
+	color: rgba(255,255,255,0.7);
+	background-color: #6bb486;
 }
