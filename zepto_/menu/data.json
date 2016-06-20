@@ -1,6 +1,9 @@
 [
 {"label":"导航一","icon":""},
 {"label":"导航二","icon":"","subs":
-	[{"label":"选项卡一", "subs":[{"label":"选项卡一"}]},
-	{"label":"选项卡二"},{"label":"选项卡三"}]}
+	[{"label":"选项卡一"},{"label":"子导航一", "subs":[{"label":"选项卡一"}]},
+	{"label":"选项卡二"},{"label":"选项卡三"}]},
+{"label":"导航三","icon":"","subs":
+[{"label":"子导航一", "subs":[{"label":"选项卡一"},{"label":"选项卡一"}]},
+{"label":"选项卡二"},{"label":"选项卡三"}]}
 ]

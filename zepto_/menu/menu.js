@@ -2,11 +2,16 @@ define(['zepto','event', 'ajax'], function($){
 	var settings = {
 		url: './data.json',
 		direction: 'vertical',
-		oPaddingLeft: 24
+		oPaddingLeft: 24,
+		prefixCls: 'branches-menu',
+		subMenuCls: 'sub-menu',
+		menuItem: 'menu-item',
+		activeCls: 'active',
+		openSubMenu: 'open',
+		hiddenSubMenu:'hidden'
 	};
 
 	$.fn.Menu = function(){
-
 		_loadMenuData();
 
 		if( settings.loadedData ){
@@ -14,30 +19,50 @@ define(['zepto','event', 'ajax'], function($){
 			var level = 1;
 
 			this.each(function(){
+				$(this).addClass(settings.prefixCls);
+				//垂直方向时，处理方式
 				$(this).append( _createUL( level, list ) );
+				//垂直时，子菜单的点击事件
+				var subMenuCls = '.' + settings.subMenuCls;
+				(settings.direction === "vertical") &&
+				( $(this).on('click', subMenuCls, _handleSubMenuClick) );
+				//点击每一项时的处理方式
+				var menuItemCls = "." + settings.menuItem;
+				$(this).on('click', menuItemCls, _handleMenuItem);
 			});
-			
-			this.on('click', '.sub-menu', function(){
-				var $ul = $($(this).parent().find('ul')[0]);
-				var dis = $ul.css("display");
-				dis = dis === "block" ? "none" : "block";
-				$ul.css("display",dis);
-				
-			});
-
-			var self = this;
-			this.on('click', '.menu-item', function(){
-				self.find(".menu-item").removeClass("active")
-				$(this).addClass("active");
-			})
 		}
+	}
+
+var _handleMenuItem = function(){
+	var menuItemCls = "." + settings.menuItem,
+		activeCls = settings.activeCls;
+
+	$(this).closest("." + settings.prefixCls).find(menuItemCls).removeClass(activeCls)
+	$(this).addClass(activeCls);
+}
+
+	var _handleSubMenuClick = function(){
+		var $ul = $($(this).parent().find('ul')[0]);
+		var dis = $ul.css("display");
+		var removeCls,addCls;
+
+		if( $ul.hasClass(settings.openSubMenu) ){
+			removeCls = settings.openSubMenu;
+			addCls = settings.hiddenSubMenu;
+		} else {
+			removeCls = settings.hiddenSubMenu;
+			addCls = settings.openSubMenu;
+		}
+
+		$ul.removeClass(removeCls).addClass(addCls);
+		$(this).removeClass('title-' + removeCls).addClass('title-' + addCls);
 	}
 
 	var _createUL = function( level, list ){
 		var $ul = $("<ul data-level=\"" + level + "\"></ul>");
 		
 		if( level !== 1){
-			$ul.css("display","none");
+			$ul.addClass(settings.hiddenSubMenu);
 		}
 
 		$.each( list, function( idx, obj ){
@@ -57,10 +82,10 @@ define(['zepto','event', 'ajax'], function($){
 			var subs = obj.subs;
 			level++;
 
-			$div.addClass("sub-menu");
+			$div.addClass(settings.subMenuCls).addClass("title-hidden");
 			$li.append( _createUL( level,subs ) );
 		} else {
-			$li.addClass("menu-item");
+			$li.addClass(settings.menuItem);
 		}
 
 		return $li;

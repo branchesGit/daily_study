@@ -5,8 +5,9 @@ html,body, ul, li, div{margin:0;padding:0;}
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: 100px;
-	color:#fff;
+	color:#333;
 	width:200px;
+	font-size: 12px;
 }
 
 ul, li{list-style:none;}
@@ -14,7 +15,7 @@ ul, li{list-style:none;}
 li{ 
 	min-height: 32px;
 	line-height: 32px;
-	background-color: rgb( 119,119,119);
+	background-color: rgb( 255,255,255);
 	position:relative;
 	display: list-item;
 }
@@ -29,7 +30,41 @@ li>div{
 	cursor: pointer;
 }
 
-.menu-item:hover, .active{
+.sub-menu:hover, .menu-item:hover, .active{
 	background-color: #fef1e9;
 	color:#f37327;
+}
+
+.sub-menu {
+	position:relative;
+}
+
+.sub-menu:after{
+	position:absolute;
+	display:block;
+	right:10px;
+	font-size: 16px;
+	height:16px;
+	width:16px;
+	content:">";
+	line-height:16px;
+	transform: rotate(-90deg);
+	transition: all 0.2s ease;
+}
+
+.branches-menu .open{
+	display: block;
+}
+
+.branches-menu .hidden{
+	display: none;
+}
+
+.title-hidden:after{
+	top:2px;
+}
+
+.title-open:after{
+	transform: rotate(90deg);
+	top:10px;
 }
