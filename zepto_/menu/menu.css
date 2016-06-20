@@ -26,7 +26,7 @@ li>div{
 	cursor: pointer;
 }
 
-//手机端用:active,pc用:hover
+/*手机端用:active,pc用:hover*/
 .sub-menu:active, .menu-item:active, .active{
 	background-color: #fef1e9;
 	color:#f37327;
