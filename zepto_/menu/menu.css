@@ -79,14 +79,22 @@ li>div{
 	white-space: nowrap;
 }
 
+
+.center{
+	position: relative;
+	left:50%;
+	float: left;
+	clear:both;
+}
+
 .menu{
 	display:block;
 	clear:both;
 	margin: 0 auto;
 	border-radius: 5px;
 	padding: 8px 15px;
-	float:left;
-	margin-left: 100px;
 	color: rgba(255,255,255,0.7);
 	background-color: #6bb486;
+	position: relative;
+	left:-50%;
 }
