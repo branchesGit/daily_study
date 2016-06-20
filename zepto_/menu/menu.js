@@ -76,6 +76,7 @@ var _handleMenuItem = function(){
 	var $gul = $(this).closest("." + settings.prefixCls);
 
 	if( !_isSameMenu($(this), $gul) ){
+		$gul.find("li").removeClass("select");
 		_removeOpenSubMenu($gul);
 	}
 
@@ -91,7 +92,7 @@ var _handleMenuItem = function(){
 	
 	var _removeOpenSubMenu = function( $elem ){
 		if( !_isVertical() ){
-			$elem.find("li").removeClass("select");
+			//$elem.find("li").removeClass("select");
 
 			var $openMenus = $elem.find(".title-open");
 			$openMenus.each(function(idx,menu){
