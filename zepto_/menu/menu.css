@@ -27,10 +27,12 @@ li>div{
 }
 
 /*手机端用:active,pc用:hover*/
-.sub-menu:active, .menu-item:active, .active{
+li.subs:active.sub-menu, .menu-item:active, .active{
 	background-color: #fef1e9;
 	color:#f37327;
 }
+
+li.subs:active:before{display: block;}
 
 .sub-menu {
 	position:relative;
