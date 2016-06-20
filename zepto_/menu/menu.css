@@ -69,8 +69,22 @@ li>div{
 .branches-horizontal>li{
 	float:left;
 	position: relative;
+
 }
 
+.branches-horizontal>li:before{
+	content:" ";
+	position: absolute;
+	width: 100%;
+	height:2px;
+	background-color: red;
+	bottom: 0;
+	left:0;
+	display: none;
+}
+
+li.active:before,
+li.select:before{display: block;}
 
 .branches-horizontal .menu-item, 
 .branches-horizontal .sub-menu{

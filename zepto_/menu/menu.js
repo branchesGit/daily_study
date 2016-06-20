@@ -32,7 +32,14 @@ define(['zepto','event', 'ajax', 'touch'], function($){
 					$(this).on('mouseover', ".subs", _onMouseOver);
 					$(this).on('mouseout', ".subs", _onMouseOut);
 				}*/
-					$(this).find(subMenuCls).on('tap', _handleSubMenuClick);
+				$(this).find(subMenuCls).on('tap', _handleSubMenuClick);
+				$(this).find(subMenuCls).on('touchstart',function(){
+					$(this).closest("li").addClass(settings.activeCls);
+				});
+
+				$(this).find(subMenuCls).on('touchend',function(){
+					$(this).closest("li").removeClass(settings.activeCls);
+				});
 				//点击每一项时的处理方式
 				var menuItemCls = "." + settings.menuItem;
 				$(this).find(menuItemCls).on('tap', _handleMenuItem);
@@ -66,15 +73,26 @@ var _isVertical = function(){
 };
 
 var _handleMenuItem = function(){
+	var $gul = $(this).closest("." + settings.prefixCls);
+
+	if( !_isSameMenu($(this), $gul) ){
+		_removeOpenSubMenu($gul);
+	}
+
 	var menuItemCls = "." + settings.menuItem,
 		activeCls = settings.activeCls;
-
-	$(this).closest("." + settings.prefixCls).find(menuItemCls).removeClass(activeCls)
+	var $menu = $(this).closest("." + settings.prefixCls);
+	$menu.find(menuItemCls).removeClass(activeCls);
 	$(this).addClass(activeCls);
+
+	$(this).closest('li[data-level="1"]').addClass("select");
+
 }
 	
 	var _removeOpenSubMenu = function( $elem ){
 		if( !_isVertical() ){
+			$elem.find("li").removeClass("select");
+
 			var $openMenus = $elem.find(".title-open");
 			$openMenus.each(function(idx,menu){
 				var $li = $(menu).parent();
