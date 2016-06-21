@@ -1,15 +1,25 @@
 require.config({
 	paths:{
-		'zepto': '../zepto/src/zepto'
+		'zepto': '../lib/src/zepto',
+		'event': '../lib/src/event',
+		'touch': '../lib/src/touch'
 	},
 	shim:{
 		'zepto':{
+			exports: '$'
+		},
+		'event':{
+			deps:['zepto'],
+			exports: '$'
+		},
+		'touch':{
+			deps:['zepto'],
 			exports: '$'
 		}
 	}
 });
 
-require(["tip"], function(){
+require(["tab"], function(){
 	$(function(){
 		$(".tabs").Tab();
 	})
