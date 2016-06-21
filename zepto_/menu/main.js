@@ -1,9 +1,9 @@
 require({
 	paths:{
-		'zepto': '../zepto/src/zepto',
-		'event':'../zepto/src/event',
-		'ajax': '../zepto/src/ajax',
-		'touch':'../zepto/src/touch'
+		'zepto': '../lib/src/zepto',
+		'event':'../lib/src/event',
+		'ajax': '../lib/src/ajax',
+		'touch':'../lib/src/touch'
 	},
 
 	shim:{

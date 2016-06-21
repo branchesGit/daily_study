@@ -1,10 +1,10 @@
 
 
 require.config({ paths:{
-		zepto:'../zepto/src/zepto',
-		fx: '../zepto/src/fx',
-		fx_methods:'../zepto/src/fx_methods',
-		event:'../zepto/src/event'
+		zepto:'../lib/src/zepto',
+		fx: '../lib/src/fx',
+		fx_methods:'../lib/src/fx_methods',
+		event:'../lib/src/event'
 	}, shim:{
 		zepto:{
 			exports: "Zepto"

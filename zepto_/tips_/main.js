@@ -1,6 +1,6 @@
 require.config({
 	paths:{
-		'zepto': '../zepto/src/zepto'
+		'zepto': '../lib/src/zepto'
 	},
 	shim:{
 		'zepto':{
