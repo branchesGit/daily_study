@@ -23,7 +23,7 @@ gulp.task('server', ['pack_js'], function(){
 
 	//修改html时，加载页面
 	gulp.watch("*.html").on("change", reload);
-
+	gulp.watch("./**/*.css").on("change", reload);
 	gulp.watch('./src/**/*.js', ['reload_by_js']);
 });
 
