@@ -4,7 +4,6 @@ function extends( target ){
 		i = 0,
 		len = args.length;
 
-	console.log( args );
 	var source;
 
 	for(; i < len; i++){

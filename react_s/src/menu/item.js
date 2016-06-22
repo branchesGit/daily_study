@@ -37,7 +37,7 @@ class Item extends React.Component{
 	render(){
 		var props = this.props;
 		var style = {};
-		style.paddingLeft = props.level * 8;
+		style.paddingLeft = props.level * 10;
 		var cls = props.className || "";
 		cls += "item"
 		return React.createElement( "li", _extends( {style: style, className: cls}, props, 
