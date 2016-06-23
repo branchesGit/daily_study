@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 let classnames = require('classnames');
 let noop = function(){};
-let Layer = require("./Layer");
+let Mask = require("../mask/Mask");
 
 
 class Dailog extends React.Component{
@@ -38,7 +38,7 @@ class Dailog extends React.Component{
 		let children = t.state.children;
 		let buttons = t.state.buttons;
 
-		console.log( t.props.className );
+	//	console.log( t.props.className );
 
 		let classset = {
 			"tDialog": true,
@@ -50,16 +50,19 @@ class Dailog extends React.Component{
 
 			return (
 				<div className="tButton" onClick={t.handleClick.bind(t, callback)}>
-					{item.children}
+					{item.children} 
 				</div>
 				);
 		});
-		return (<Layer show={mask} width={width||270} > 
+
+		let Mk = mask ? <Mask zIndex={10} visible={show} /> : ''; 
+		return (<div className="tLayer" style={{zIndex:9}}> 
+				{Mk}
 				<div className={classnames(classset)}>
 				{title? <h1 className="tDailogTitle">{title}</h1> : "" }
 				<div className="tDailogContent">{children}</div>
 				<div className="tDailogFooter">{btn}</div>
-			</div></Layer>);
+			</div></div>);
 	}
 }
 

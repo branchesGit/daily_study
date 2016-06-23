@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2424ce0c30efaee1f772"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "22b8a2a275cd071821df"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -702,7 +702,7 @@
 
 	var DailogDemo = __webpack_require__(176);
 
-	var MaskDemo = __webpack_require__(180);
+	//var MaskDemo = require("./mask");
 
 /***/ },
 /* 4 */
@@ -21158,7 +21158,7 @@
 
 	var classnames = __webpack_require__(174);
 	var noop = function noop() {};
-	var Layer = __webpack_require__(179);
+	var Mask = __webpack_require__(179);
 
 	var Dailog = function (_React$Component) {
 		_inherits(Dailog, _React$Component);
@@ -21202,7 +21202,7 @@
 				var children = t.state.children;
 				var buttons = t.state.buttons;
 
-				console.log(t.props.className);
+				//	console.log( t.props.className );
 
 				var classset = _defineProperty({
 					"tDialog": true
@@ -21217,9 +21217,12 @@
 						item.children
 					);
 				});
+
+				var Mk = mask ? _react2.default.createElement(Mask, { zIndex: 10, visible: show }) : '';
 				return _react2.default.createElement(
-					Layer,
-					{ show: mask, width: width || 270 },
+					'div',
+					{ className: 'tLayer', style: { zIndex: 9 } },
+					Mk,
 					_react2.default.createElement(
 						'div',
 						{ className: classnames(classset) },
@@ -21289,90 +21292,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var classnames = __webpack_require__(174);
-
-	var Layer = function (_React$Component) {
-		_inherits(Layer, _React$Component);
-
-		function Layer(props) {
-			_classCallCheck(this, Layer);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Layer).call(this, props));
-		}
-
-		_createClass(Layer, [{
-			key: 'render',
-			value: function render() {
-				var t = this;
-				var show = t.props.show;
-				var width = t.props.width;
-				var classset = {
-					"tLayer": true,
-					"tLayerShow": show
-				};
-				width = typeof width === "string" ? width : width + 'px';
-
-				return _react2.default.createElement(
-					'div',
-					{ className: classnames(classset), width: width },
-					t.props.children
-				);
-			}
-		}]);
-
-		return Layer;
-	}(_react2.default.Component);
-
-	Layer.defaultProps = {
-		show: true,
-		width: 270
-	};
-
-	Layer.propTypes = {
-		show: _react2.default.PropTypes.bool,
-		width: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.string, _react2.default.PropTypes.number])
-	};
-
-	Layer.displayName = "Layer";
-
-	module.exports = Layer;
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var Mask = __webpack_require__(181);
-
-	Mask.show({ onHide: function onHide() {
-			alert('hide');
-		}, closeable: true });
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(37);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 	/*
 		遮罩层：
 		visible: 可见不可见；
@@ -21380,7 +21299,7 @@
 		onHide: 处理关闭时响应的回调函数
 		closeable: 遮罩层可不可以关闭
 	*/
-	__webpack_require__(182);
+	__webpack_require__(180);
 
 	var classnames = __webpack_require__(174);
 
@@ -21504,23 +21423,23 @@
 	module.exports = Mask;
 
 /***/ },
-/* 182 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(183);
+	var content = __webpack_require__(181);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(185)(content, {});
+	var update = __webpack_require__(183)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(183, function() {
-				var newContent = __webpack_require__(183);
+			module.hot.accept(181, function() {
+				var newContent = __webpack_require__(181);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21530,10 +21449,10 @@
 	}
 
 /***/ },
-/* 183 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(184)();
+	exports = module.exports = __webpack_require__(182)();
 	// imports
 
 
@@ -21544,7 +21463,7 @@
 
 
 /***/ },
-/* 184 */
+/* 182 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -21599,7 +21518,7 @@
 	};
 
 /***/ },
-/* 185 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
