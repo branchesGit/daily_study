@@ -5,3 +5,8 @@
 var OnOffDemo = require('./on-off');
 
 
+var DailogDemo = require('./dailog');
+
+var MaskDemo = require("./mask");
+
+

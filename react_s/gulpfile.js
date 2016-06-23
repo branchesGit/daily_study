@@ -30,7 +30,7 @@ gulp.task('server', ['pack_js'], function(){
 gulp.task('pack_js', ['clean'], function(){
 	gulp.src('./src')
 	.pipe(webpack(config))
-	.pipe(uglify())
+	//.pipe(uglify())
 	.pipe(gulp.dest("build/"))
 	.pipe(reload({stream:true})); //在输出流里强行注入
 });
