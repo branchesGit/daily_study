@@ -23,7 +23,13 @@ class Item extends React.Component{
 		let baseProps = {
 			className: classnames( classet )
 		};
-		return React.cloneElement(c,baseProps);
+
+		//return React.cloneElement(c,baseProps);
+		var text = c.props.children.toString().replace("\"",'');
+		console.log(text);
+		return React.createElement(c.type, baseProps, 
+				React.createElement('i'),text);
+
 	}
 
 	handleClick( e ){

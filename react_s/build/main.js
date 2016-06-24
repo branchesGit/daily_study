@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "18b2eaaffbdd5f496d20"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "93372fff43dd2650aee9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21075,7 +21075,11 @@
 				var baseProps = {
 					className: classnames(classet)
 				};
-				return _react2.default.cloneElement(c, baseProps);
+
+				//return React.cloneElement(c,baseProps);
+				var text = c.props.children.toString().replace("\"", '');
+				console.log(text);
+				return _react2.default.createElement(c.type, baseProps, _react2.default.createElement('i'), text);
 			}
 		}, {
 			key: 'handleClick',
