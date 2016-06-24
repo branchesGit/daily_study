@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "22b8a2a275cd071821df"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "18b2eaaffbdd5f496d20"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -696,11 +696,11 @@
 
 	//var ListDemo = require('./list');
 
-	//var MenuDemo = require('./menu');
+	var MenuDemo = __webpack_require__(4);
 
-	var OnOffDemo = __webpack_require__(4);
+	//var OnOffDemo = require('./on-off');
 
-	var DailogDemo = __webpack_require__(176);
+	//var DailogDemo = require('./dailog');
 
 	//var MaskDemo = require("./mask");
 
@@ -720,9 +720,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var OnOffDemo = __webpack_require__(172);
+	var Demo = __webpack_require__(172);
 
-	_reactDom2.default.render(_react2.default.createElement(OnOffDemo, null), document.getElementById("onOff"));
+	_reactDom2.default.render(_react2.default.createElement(Demo, null), document.getElementById("menu"));
 
 /***/ },
 /* 5 */
@@ -20877,39 +20877,154 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var OnOff = __webpack_require__(173);
+	var Menu = __webpack_require__(173);
+	var Item = __webpack_require__(174);
 
-	var OnOffDemo = function (_React$Component) {
-		_inherits(OnOffDemo, _React$Component);
+	var Demo = function (_React$Component) {
+		_inherits(Demo, _React$Component);
 
-		function OnOffDemo(props) {
-			_classCallCheck(this, OnOffDemo);
+		function Demo(props) {
+			_classCallCheck(this, Demo);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(OnOffDemo).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
 
-			_this.state = { on: false };
+			_this.state = {
+				key: 'home1'
+			};
 			return _this;
 		}
 
-		_createClass(OnOffDemo, [{
-			key: 'handleClick',
-			value: function handleClick(OnOrOff) {
-				this.setState({ 'on': OnOrOff });
+		_createClass(Demo, [{
+			key: 'onChange',
+			value: function onChange() {
+				console.log('click');
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement(OnOff, { on: this.state.on, onChange: this.handleClick.bind(this) });
+				var t = this;
+
+				return _react2.default.createElement(
+					Menu,
+					{ select_key: this.state.key, onHandleClick: t.onChange.bind(t) },
+					_react2.default.createElement(
+						Item,
+						{ data_key: 'home1', icon: 'download' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'javascript:void(0);' },
+							'Download'
+						)
+					),
+					_react2.default.createElement(
+						Item,
+						{ data_key: 'home2', icon: 'settings' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'javascript:void(0);' },
+							'Settings'
+						)
+					),
+					_react2.default.createElement(
+						Item,
+						{ data_key: 'home3', icon: 'nav' },
+						_react2.default.createElement(
+							'a',
+							{ href: 'javascript:void(0);' },
+							'Nav'
+						)
+					)
+				);
 			}
 		}]);
 
-		return OnOffDemo;
+		return Demo;
 	}(_react2.default.Component);
 
-	module.exports = OnOffDemo;
+	module.exports = Demo;
 
 /***/ },
 /* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(37);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	//单纯的折叠菜单
+
+	var Menu = function (_React$Component) {
+		_inherits(Menu, _React$Component);
+
+		function Menu(props) {
+			_classCallCheck(this, Menu);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Menu).call(this, props));
+
+			_this.state = {
+				selectedKey: props.select_key,
+				onHandleClick: props.onHandleClick
+			};
+			return _this;
+		}
+
+		_createClass(Menu, [{
+			key: 'renderMenuItem',
+			value: function renderMenuItem(c, idx) {
+				var props = c.props;
+
+				var baseProps = {
+					index: idx,
+					icon: props.icon,
+					dkey: props.data_key,
+					onClick: this.onHandleClick.bind(this),
+					selectedKey: this.state.selectedKey
+				};
+
+				return _react2.default.cloneElement(c, baseProps);
+			}
+		}, {
+			key: 'onHandleClick',
+			value: function onHandleClick(e) {
+				console.log(e.item.props.dkey);
+				var callback = this.state.onHandleClick;
+				callback();
+			}
+
+			//
+
+		}, {
+			key: 'render',
+			value: function render() {
+				var t = this;
+
+				return _react2.default.createElement("ul", {}, _react2.default.Children.map(t.props.children, t.renderMenuItem.bind(t)));
+			}
+		}]);
+
+		return Menu;
+	}(_react2.default.Component);
+
+	module.exports = Menu;
+
+/***/ },
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20934,72 +21049,76 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	//require("./OnOff.css");
+	var classnames = __webpack_require__(175);
+	var noop = function noop() {};
 
-	var classnames = __webpack_require__(174);
+	var Item = function (_React$Component) {
+		_inherits(Item, _React$Component);
 
-	var OnOff = function (_React$Component) {
-		_inherits(OnOff, _React$Component);
+		function Item(props) {
+			_classCallCheck(this, Item);
 
-		function OnOff(props) {
-			_classCallCheck(this, OnOff);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(OnOff).call(this, props));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(Item).call(this, props));
 		}
 
-		_createClass(OnOff, [{
-			key: 'handleChange',
-			value: function handleChange(event) {
-				var props = this.props;
-				var handleClick = props.onChange;
-				handleClick(!props.on);
+		_createClass(Item, [{
+			key: 'renderMenuItem',
+			value: function renderMenuItem(c, idx) {
+				var _classet;
+
+				//console.log( this.props );
+				var t = this;
+				var props = t.props;
+
+				var classet = (_classet = {}, _defineProperty(_classet, props.icon, !!props.icon), _defineProperty(_classet, props.className, !!props.className), _defineProperty(_classet, "select", t.props.data_key === t.props.selectedKey), _classet);
+
+				var baseProps = {
+					className: classnames(classet)
+				};
+				return _react2.default.cloneElement(c, baseProps);
+			}
+		}, {
+			key: 'handleClick',
+			value: function handleClick(e) {
+				e.stopPropagation();
+
+				this.props.onClick({
+					item: this,
+					domEvent: e
+				});
 			}
 		}, {
 			key: 'render',
 			value: function render() {
 				var t = this;
-				var classSet = _defineProperty({
-					"tOnOff": true,
-					"tOn": t.props.on,
-					"readOnly": t.props.readOnly
-				}, t.props.className, !!t.props.className);
+				var dkey = t.props.dkey;
 
-				return _react2.default.createElement(
-					'div',
-					{ className: classnames(classSet),
-						onClick: t.handleChange.bind(t),
-						readyOnly: t.props.readOnly },
-					_react2.default.createElement(
-						'div',
-						{ className: 'tOnOffBack' },
-						_react2.default.createElement('div', { className: 'tOnOffRaduis' })
-					)
-				);
+				var baseProps = {
+					onClick: t.handleClick.bind(t)
+				};
+
+				return _react2.default.createElement("li", baseProps, _react2.default.Children.map(this.props.children, this.renderMenuItem.bind(this)));
 			}
 		}]);
 
-		return OnOff;
+		return Item;
 	}(_react2.default.Component);
 
-	OnOff.defaultProps = {
-		on: true,
-		onChange: function onChange() {},
-
-		readOnly: false
+	Item.defaultProps = {
+		dkey: '',
+		onSelect: noop,
+		onClick: noop
 	};
 
-	OnOff.propTypes = {
-		on: _react2.default.PropTypes.bool,
-		onChange: _react2.default.PropTypes.func,
-		readOnly: _react2.default.PropTypes.bool
+	Item.propTypes = {
+		dkey: _react2.default.PropTypes.string,
+		onSelect: _react2.default.PropTypes.func,
+		onClick: _react2.default.PropTypes.func
 	};
-
-	OnOff.displayName = "OnOff";
-
-	module.exports = OnOff;
+	module.exports = Item;
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
@@ -21045,7 +21164,7 @@
 
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if ("function" === 'function' && _typeof(__webpack_require__(175)) === 'object' && __webpack_require__(175)) {
+		} else if ("function" === 'function' && _typeof(__webpack_require__(176)) === 'object' && __webpack_require__(176)) {
 			// register as 'classnames', consistent with npm package name
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
@@ -21056,718 +21175,12 @@
 	})();
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
-
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(37);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Demo = __webpack_require__(177);
-
-	_reactDom2.default.render(_react2.default.createElement(Demo, null), document.getElementById("dailog"));
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(37);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Dailog = __webpack_require__(178);
-
-	var Demo = function (_React$Component) {
-		_inherits(Demo, _React$Component);
-
-		function Demo(props) {
-			_classCallCheck(this, Demo);
-
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
-		}
-
-		_createClass(Demo, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(Dailog, { width: 300 });
-			}
-		}]);
-
-		return Demo;
-	}(_react2.default.Component);
-
-	module.exports = Demo;
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(37);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var classnames = __webpack_require__(174);
-	var noop = function noop() {};
-	var Mask = __webpack_require__(179);
-
-	var Dailog = function (_React$Component) {
-		_inherits(Dailog, _React$Component);
-
-		function Dailog(props) {
-			_classCallCheck(this, Dailog);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dailog).call(this, props));
-
-			_this.state = {
-				show: _this.props.show,
-				title: _this.props.title,
-				children: _this.props.children,
-				buttons: _this.props.buttons
-			};
-			return _this;
-		}
-
-		_createClass(Dailog, [{
-			key: 'hide',
-			value: function hide() {
-				this.state.show = false;
-				this.setState(this.state);
-			}
-		}, {
-			key: 'handleClick',
-			value: function handleClick(callback) {
-				var t = this;
-				if (callback() !== false) {
-					t.hide();
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var t = this;
-				var mask = t.props.mask;
-				var width = t.props.width;
-				var show = t.state.show;
-				var title = t.state.title;
-				var children = t.state.children;
-				var buttons = t.state.buttons;
-
-				//	console.log( t.props.className );
-
-				var classset = _defineProperty({
-					"tDialog": true
-				}, t.props.className, !!t.props.className);
-
-				var btn = buttons && buttons.map(function (item, i) {
-					var callback = item.callback || noop;
-
-					return _react2.default.createElement(
-						'div',
-						{ className: 'tButton', onClick: t.handleClick.bind(t, callback) },
-						item.children
-					);
-				});
-
-				var Mk = mask ? _react2.default.createElement(Mask, { zIndex: 10, visible: show }) : '';
-				return _react2.default.createElement(
-					'div',
-					{ className: 'tLayer', style: { zIndex: 9 } },
-					Mk,
-					_react2.default.createElement(
-						'div',
-						{ className: classnames(classset) },
-						title ? _react2.default.createElement(
-							'h1',
-							{ className: 'tDailogTitle' },
-							title
-						) : "",
-						_react2.default.createElement(
-							'div',
-							{ className: 'tDailogContent' },
-							children
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'tDailogFooter' },
-							btn
-						)
-					)
-				);
-			}
-		}]);
-
-		return Dailog;
-	}(_react2.default.Component);
-
-	Dailog.defaultProps = {
-		buttons: [{
-			children: '确定',
-			callback: function callback() {}
-		}],
-		title: '',
-		show: false,
-		mask: true
-	};
-
-	Dailog.propTyps = {
-		buttons: _react2.default.PropTypes.array,
-		title: _react2.default.PropTypes.string,
-		show: _react2.default.PropTypes.bool,
-		mask: _react2.default.PropTypes.bool
-	};
-
-	module.exports = Dailog;
-
-/***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(5);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(37);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	/*
-		遮罩层：
-		visible: 可见不可见；
-		zIndex: 数值，层次
-		onHide: 处理关闭时响应的回调函数
-		closeable: 遮罩层可不可以关闭
-	*/
-	__webpack_require__(180);
-
-	var classnames = __webpack_require__(174);
-
-	var Mask = function (_React$Component) {
-		_inherits(Mask, _React$Component);
-
-		function Mask(props) {
-			_classCallCheck(this, Mask);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Mask).call(this, props));
-
-			_this.state = {
-				visible: props.visible,
-				zIndex: props.zIndex,
-				onHide: props.onHide,
-				opacity: props.opacity,
-				closeable: props.closeable
-			};
-			return _this;
-		}
-
-		_createClass(Mask, [{
-			key: 'show',
-			value: function show(options) {
-				var t = this;
-
-				options = options || {};
-
-				t.setState({
-					opacity: 'opacity' in options ? options.opacity : t.props.opacity,
-					zIndex: options.zIndex || t.props.zIndex,
-					onHide: options.onHide || t.props.onHide,
-					closeable: 'closeable' in options ? options.closeable : t.props.closeable,
-					visible: true
-				});
-			}
-		}, {
-			key: 'hide',
-			value: function hide(force) {
-				var t = this;
-				if (force || t.state.closeable) {
-					t.state.visible = false;
-					t.setState(t.state);
-					t.state.onHide.call(t);
-				}
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var t = this;
-				var style = {};
-
-				var top = t.props.top || 0;
-				var cls = t.props.className || '';
-				var opacity = t.props.opacity;
-				var classset = {
-					"tMask": true,
-					"tMask-visible": t.state.visible,
-					cls: !!cls
-				};
-
-				style.opacity = opacity;
-				style.zIndex = t.state.zIndex;
-
-				return _react2.default.createElement('div', { className: classnames(classset), style: style,
-					onClick: t.hide.bind(t, false) });
-			}
-		}]);
-
-		return Mask;
-	}(_react2.default.Component);
-
-	Mask.defaultProps = {
-		visible: true,
-		zIndex: 1000,
-		onHide: function onHide() {},
-
-		opacity: 0.6,
-		closeable: true
-	};
-
-	Mask.propTypes = {
-		visible: _react2.default.PropTypes.bool,
-		zIndex: _react2.default.PropTypes.number,
-		onHide: _react2.default.PropTypes.func,
-		opacity: _react2.default.PropTypes.number,
-		closeable: _react2.default.PropTypes.bool
-	};
-
-	var wrapper = null;
-	function _createTingleGlobalMask() {
-		var WRAPPER_ID = '__TingleGlobalMask__';
-		var doc = document;
-		wrapper = doc.getElementById(WRAPPER_ID);
-
-		if (!wrapper) {
-			wrapper = doc.createElement('div');
-			wrapper.id = WRAPPER_ID;
-			doc.body.appendChild(wrapper);
-		}
-	}
-
-	//确保单例
-	Mask.global = null;
-	Mask.show = function (options) {
-		if (!Mask.global) {
-			_createTingleGlobalMask();
-
-			Mask.global = _reactDom2.default.render(_react2.default.createElement(Mask, { closeable: false }), wrapper);
-		}
-
-		Mask.global.show(options);
-	};
-
-	Mask.hide = function () {
-		Mask.global && Mask.global.hide(true);
-	};
-
-	Mask.display = "Mask";
-
-	module.exports = Mask;
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(181);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(183)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(181, function() {
-				var newContent = __webpack_require__(181);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(182)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "#__TingleGlobalMask__{\r\n\tposition: absolute;\r\n\tleft:0;\r\n\ttop:0;\r\n\twidth:100%;\r\n\theight:100%;\r\n}\r\n\r\n.tMask{\r\n\tposition: absolute;\r\n\tleft:0;\r\n\ttop:0;\r\n\twidth:100%;\r\n\theight:100%;\r\n\tbackground-color: rgb(119,119,119);\r\n\tdisplay:none;\r\n}\r\n\r\n.tMask-visible{\r\n\tdisplay:block;\r\n}", ""]);
-
-	// exports
-
-
-/***/ },
-/* 182 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function () {
-		var list = [];
-
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for (var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if (item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
-
-		// import a list of modules into the list
-		list.i = function (modules, mediaQuery) {
-			if (typeof modules === "string") modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for (var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if (typeof id === "number") alreadyImportedModules[id] = true;
-			}
-			for (i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if (typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if (mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if (mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
-
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
-
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
-
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
-
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
-
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
-
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
-
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
-
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
-
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-
-		update(obj);
-
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-
-	var replaceText = (function () {
-		var textStore = [];
-
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var sourceMap = obj.sourceMap;
-
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-
-		var blob = new Blob([css], { type: "text/css" });
-
-		var oldSrc = linkElement.href;
-
-		linkElement.href = URL.createObjectURL(blob);
-
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
 
 /***/ }
 /******/ ]);
