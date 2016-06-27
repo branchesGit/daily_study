@@ -18,6 +18,7 @@ class Menu extends React.Component{
 		var props = c.props;
 
 		let baseProps = {
+			icon: c.props.icon,
 			index: idx,
 			dkey: c.props.data_key,
 			onClick: this.onHandleClick.bind(this),
@@ -40,7 +41,7 @@ class Menu extends React.Component{
 	//
 	render(){
 		let t = this;
-		
+
 		return React.createElement( "ul",{className:"branches-menu"}, 
 			React.Children.map( t.props.children,t.renderMenuItem.bind(t) ) );
 	}

@@ -55,26 +55,14 @@ class SubMenu extends React.Component{
 			onClick: t.onOpenChange.bind(t)
 		};
 
-	
-
 		var ReactUL = React.createElement('ul', baseProps, React.Children.map( props.children, 
 			t.renderMenuItem.bind(t) ) );
-
+		classes[ t.props.icon ] = !!t.props.icon;
+		baseProps.className = classnames( classes );
+		console.log( t.props.icon, classnames( classes ) );
 		return React.createElement('li',baseProps, [header, ReactUL] )
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

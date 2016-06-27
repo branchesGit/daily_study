@@ -27,7 +27,7 @@ class Demo extends React.Component{
 				<Item data_key="home1" icon="download"><a href="javascript:void(0);"><i></i><span>Download</span><span className="arrow right"></span></a></Item>
 				<Item data_key="home2" icon="settings"><a href="javascript:void(0);"><i></i><span>Settings</span><span className="arrow right"></span></a></Item>
 				<Item data_key="home3" icon="nav"><a href="javascript:void(0);"><i></i><span>Nav</span><span className="arrow right"></span></a></Item>
-				<SubMenu head={<a href="javascript:void(0);"><i></i><span>SubMenu</span><span className="arrow right"></span></a>}>
+				<SubMenu icon="download" head={<a href="javascript:void(0);"><i></i><span>SubMenu</span><span className="arrow right"></span></a>}>
 					<Item data_key="home4" icon="nav"><a href="javascript:void(0);"><span>Sub-1</span></a></Item>
 					<Item data_key="home5" icon="nav"><a href="javascript:void(0);"><span>Sub-2</span></a></Item>
 				</SubMenu>

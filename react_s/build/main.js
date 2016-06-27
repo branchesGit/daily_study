@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "28e5c286d18edaeb1e8a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1c579b856cefc469fb1b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20958,7 +20958,7 @@
 					),
 					_react2.default.createElement(
 						SubMenu,
-						{ head: _react2.default.createElement(
+						{ icon: 'download', head: _react2.default.createElement(
 								'a',
 								{ href: 'javascript:void(0);' },
 								_react2.default.createElement('i', null),
@@ -21052,6 +21052,7 @@
 				var props = c.props;
 
 				var baseProps = {
+					icon: c.props.icon,
 					index: idx,
 					dkey: c.props.data_key,
 					onClick: this.onHandleClick.bind(this),
@@ -21343,7 +21344,9 @@
 				};
 
 				var ReactUL = _react2.default.createElement('ul', baseProps, _react2.default.Children.map(props.children, t.renderMenuItem.bind(t)));
-
+				classes[t.props.icon] = !!t.props.icon;
+				baseProps.className = classnames(classes);
+				console.log(t.props.icon, classnames(classes));
 				return _react2.default.createElement('li', baseProps, [header, ReactUL]);
 			}
 		}]);
