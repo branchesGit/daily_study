@@ -19,8 +19,7 @@ class Menu extends React.Component{
 
 		let baseProps = {
 			index: idx,
-			icon: props.icon,
-			dkey: props.data_key,
+			dkey: c.props.data_key,
 			onClick: this.onHandleClick.bind(this),
 			selectedKey: this.state.selectedKey
 		}
@@ -29,19 +28,24 @@ class Menu extends React.Component{
 	}
 
 	onHandleClick( e ){
-		console.log( e.item.props.dkey );
 		var callback = this.state.onHandleClick;
-		callback();
+		callback( e.item.props.dkey );
+	}
+
+	componentWillReceiveProps( nextProps ){
+		if( 'select_key' in nextProps )
+			this.state.selectedKey = nextProps.select_key;
 	}
 
 	//
 	render(){
 		let t = this;
-
-		return React.createElement( "ul",{}, 
+		
+		return React.createElement( "ul",{className:"branches-menu"}, 
 			React.Children.map( t.props.children,t.renderMenuItem.bind(t) ) );
 	}
 }
+
 
 
 module.exports = Menu;

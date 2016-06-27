@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./font/fontawesome-webfont.eot?v=3.2.1');
+  src: url('./font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
+   url('./font/fontawesome-webfont.woff?v=3.2.1') format('woff'), 
+   url('./font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'),\
+    url('./font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,body, ul, li,div{
+	margin:0;
+	padding:0;
+}
+ 
+ i{font-style: normal;}
+
+li{ list-style:none; }
+
+body{
+	width: 1240px;
+	margin: 0 auto;
+}
+
+.branches-menu{
+	max-width: 300px;
+}
+
+.branches-menu li{
+	line-height: 30px;
+	min-height: 30px;
+}
+
+.branches-menu a, .branches-menu a:hover{ 
+	text-decoration: none;
+
+}
+
+.branches-menu a{
+	position: relative;
+	padding-left: 36px;
+	padding-right: 36px;
+	margin-bottom: -1px;
+	display: inline-block;
+	line-height: 30px;
+	border: 1px solid red;
+	min-height: 30px;
+	color: #333;
+}
+
+.branches-menu a, .branches-menu span{
+	line-height: 30px;
+	min-height: 30px;
+}
+.branches-menu a i{
+	
+	width: 30px;
+	position:absolute;
+	left: 0;
+	top: 8px;   
+	text-align: center;
+	padding-right: 6px;
+	text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.branches-menu a{
+	display: block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: 16px;
+	
+}
+
+.right{
+	position: absolute;
+	right: 8px;
+	top:0px;
+}
+
+.arrow{
+	font-size:inherit;
+
+}
+
+.arrow:before{
+	content:"\f105";
+}
+.download i:before{
+	content:"\f004";
+	font-size: 16px;
+
+}
+
+*:before{
+	box-sizing: border-box;
+}
+
+ul.hidden{
+	display:none;
+	height: 0%;
+	opacity: 0;
+}
+
+.branches-menu ul{
+	transition: all 2s ease-in;
+}
+
+ul.open{
+	display: block;
+	height: 100%;
+	opacity: 1;
+}

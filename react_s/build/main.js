@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "93372fff43dd2650aee9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "28e5c286d18edaeb1e8a"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -20879,6 +20879,7 @@
 
 	var Menu = __webpack_require__(173);
 	var Item = __webpack_require__(174);
+	var SubMenu = __webpack_require__(177);
 
 	var Demo = function (_React$Component) {
 		_inherits(Demo, _React$Component);
@@ -20889,15 +20890,18 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
 
 			_this.state = {
-				key: 'home1'
+				key: 'home4',
+				onHandleClick: _this.onChange.bind(_this)
 			};
 			return _this;
 		}
 
 		_createClass(Demo, [{
 			key: 'onChange',
-			value: function onChange() {
-				console.log('click');
+			value: function onChange(key) {
+
+				this.state.key = key;
+				this.setState(this.state);
 			}
 		}, {
 			key: 'render',
@@ -20913,7 +20917,13 @@
 						_react2.default.createElement(
 							'a',
 							{ href: 'javascript:void(0);' },
-							'Download'
+							_react2.default.createElement('i', null),
+							_react2.default.createElement(
+								'span',
+								null,
+								'Download'
+							),
+							_react2.default.createElement('span', { className: 'arrow right' })
 						)
 					),
 					_react2.default.createElement(
@@ -20922,7 +20932,13 @@
 						_react2.default.createElement(
 							'a',
 							{ href: 'javascript:void(0);' },
-							'Settings'
+							_react2.default.createElement('i', null),
+							_react2.default.createElement(
+								'span',
+								null,
+								'Settings'
+							),
+							_react2.default.createElement('span', { className: 'arrow right' })
 						)
 					),
 					_react2.default.createElement(
@@ -20931,7 +20947,53 @@
 						_react2.default.createElement(
 							'a',
 							{ href: 'javascript:void(0);' },
-							'Nav'
+							_react2.default.createElement('i', null),
+							_react2.default.createElement(
+								'span',
+								null,
+								'Nav'
+							),
+							_react2.default.createElement('span', { className: 'arrow right' })
+						)
+					),
+					_react2.default.createElement(
+						SubMenu,
+						{ head: _react2.default.createElement(
+								'a',
+								{ href: 'javascript:void(0);' },
+								_react2.default.createElement('i', null),
+								_react2.default.createElement(
+									'span',
+									null,
+									'SubMenu'
+								),
+								_react2.default.createElement('span', { className: 'arrow right' })
+							) },
+						_react2.default.createElement(
+							Item,
+							{ data_key: 'home4', icon: 'nav' },
+							_react2.default.createElement(
+								'a',
+								{ href: 'javascript:void(0);' },
+								_react2.default.createElement(
+									'span',
+									null,
+									'Sub-1'
+								)
+							)
+						),
+						_react2.default.createElement(
+							Item,
+							{ data_key: 'home5', icon: 'nav' },
+							_react2.default.createElement(
+								'a',
+								{ href: 'javascript:void(0);' },
+								_react2.default.createElement(
+									'span',
+									null,
+									'Sub-2'
+								)
+							)
 						)
 					)
 				);
@@ -20991,8 +21053,7 @@
 
 				var baseProps = {
 					index: idx,
-					icon: props.icon,
-					dkey: props.data_key,
+					dkey: c.props.data_key,
 					onClick: this.onHandleClick.bind(this),
 					selectedKey: this.state.selectedKey
 				};
@@ -21002,9 +21063,13 @@
 		}, {
 			key: 'onHandleClick',
 			value: function onHandleClick(e) {
-				console.log(e.item.props.dkey);
 				var callback = this.state.onHandleClick;
-				callback();
+				callback(e.item.props.dkey);
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				if ('select_key' in nextProps) this.state.selectedKey = nextProps.select_key;
 			}
 
 			//
@@ -21014,7 +21079,7 @@
 			value: function render() {
 				var t = this;
 
-				return _react2.default.createElement("ul", {}, _react2.default.Children.map(t.props.children, t.renderMenuItem.bind(t)));
+				return _react2.default.createElement("ul", { className: "branches-menu" }, _react2.default.Children.map(t.props.children, t.renderMenuItem.bind(t)));
 			}
 		}]);
 
@@ -21066,20 +21131,16 @@
 			value: function renderMenuItem(c, idx) {
 				var _classet;
 
-				//console.log( this.props );
 				var t = this;
 				var props = t.props;
 
-				var classet = (_classet = {}, _defineProperty(_classet, props.icon, !!props.icon), _defineProperty(_classet, props.className, !!props.className), _defineProperty(_classet, "select", t.props.data_key === t.props.selectedKey), _classet);
+				var classet = (_classet = {}, _defineProperty(_classet, props.icon, !!props.icon), _defineProperty(_classet, props.className, !!props.className), _defineProperty(_classet, "select", props.dkey === props.selectedKey), _classet);
 
 				var baseProps = {
 					className: classnames(classet)
 				};
 
-				//return React.cloneElement(c,baseProps);
-				var text = c.props.children.toString().replace("\"", '');
-				console.log(text);
-				return _react2.default.createElement(c.type, baseProps, _react2.default.createElement('i'), text);
+				return _react2.default.cloneElement(c, baseProps);
 			}
 		}, {
 			key: 'handleClick',
@@ -21095,7 +21156,6 @@
 			key: 'render',
 			value: function render() {
 				var t = this;
-				var dkey = t.props.dkey;
 
 				var baseProps = {
 					onClick: t.handleClick.bind(t)
@@ -21185,6 +21245,113 @@
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(5);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(37);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _extends = Object.assign || function (target) {
+		for (var i = 1; i < arguments.length; i++) {
+			var source = arguments[i];for (var key in source) {
+				if (Object.prototype.hasOwnProperty.call(source, key)) {
+					target[key] = source[key];
+				}
+			}
+		}return target;
+	};
+
+	var classnames = __webpack_require__(175);
+
+	var SubMenu = function (_React$Component) {
+		_inherits(SubMenu, _React$Component);
+
+		function SubMenu(props) {
+			_classCallCheck(this, SubMenu);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SubMenu).call(this, props));
+
+			_this.state = {
+				open: props.opened || false,
+				header: props.head,
+				dkey: props.dkey,
+				selectedKey: props.selectedKey,
+				onClick: props.onClick
+			};
+			return _this;
+		}
+
+		_createClass(SubMenu, [{
+			key: 'renderMenuItem',
+			value: function renderMenuItem(c, idx) {
+				var t = this;
+				var baseProps = _extends({}, t.state);
+				baseProps.dkey = c.props.data_key;
+
+				return _react2.default.cloneElement(c, baseProps);
+			}
+		}, {
+			key: 'onOpenChange',
+			value: function onOpenChange() {
+				var state = this.state;
+				state.open = !state.open;
+
+				this.setState(state);
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				if ('selectedKey' in nextProps) this.state.selectedKey = nextProps.selectedKey;
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var t = this,
+				    props = t.props,
+				    state = t.state,
+				    header = state.header;
+
+				var classes = _defineProperty({
+					"open": state.open,
+					"hidden": !state.open
+				}, props.className, !!props.className);
+
+				var baseProps = {
+					className: classnames(classes),
+					onClick: t.onOpenChange.bind(t)
+				};
+
+				var ReactUL = _react2.default.createElement('ul', baseProps, _react2.default.Children.map(props.children, t.renderMenuItem.bind(t)));
+
+				return _react2.default.createElement('li', baseProps, [header, ReactUL]);
+			}
+		}]);
+
+		return SubMenu;
+	}(_react2.default.Component);
+
+	module.exports = SubMenu;
 
 /***/ }
 /******/ ]);
