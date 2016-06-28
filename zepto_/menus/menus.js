@@ -97,33 +97,36 @@ define(['zepto', 'ajax'], function($){
 		})
 	}
 
+	var _closeSubMenu = function( iClose ){
+					//关闭展开项
+		var $item = _settings.openItem;
+		
+		//console.log( $item, iClose);
+		if( iClose !== undefined && $item ){
+			
+			$item.removeClass('open').addClass('close');
+			$item.data('close','1');
+			$item.find("ul").addClass('hidden');
+
+			if( parseInt( $item.data("sub-select"), 10) === 1 ){
+				$item.addClass('sub-select-close');
+			}
+		}
+	}
+
 	function _handleSelectMenu(){
 		var $elem = _settings.$elem;
 		
 		$elem.on('click', function( e ){
-			var elem = e.target;
-			var $li = $(elem).closest('li');
-			var $a = $li.find("a").eq(0);
+			var elem = e.target,
+				$li = $(elem).closest('li'),
+				$a = $li.find("a").eq(0),
+				level = $li.data("level"),
+				index = $li.data('index'),
+				iClose = $li.data("close"),
+				$parentLi;
 
-			var level = $li.data("level");
-			var index = $li.data('index');
-			var iClose = $li.data("close");
-			var $parentLi;
-
-			//关闭展开项
-			var $item = _settings.openItem;
-			
-			//console.log( $item, iClose);
-			if( iClose !== undefined && $item ){
-				
-				$item.removeClass('open').addClass('close');
-				$item.data('close','1');
-				$item.find("ul").addClass('hidden');
-
-				if( parseInt( $item.data("sub-select"), 10) === 1 ){
-					$item.addClass('sub-select-close');
-				}
-			}
+			_closeSubMenu(iClose);
 
 			if( iClose === undefined && (level !== _settings.selectLevel 
 				|| index !== _settings.selectIndex) ){
