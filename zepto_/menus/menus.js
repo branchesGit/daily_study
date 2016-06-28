@@ -98,7 +98,7 @@ define(['zepto', 'ajax'], function($){
 	}
 
 	var _closeSubMenu = function( iClose ){
-					//关闭展开项
+		//关闭展开项
 		var $item = _settings.openItem;
 		
 		//console.log( $item, iClose);
